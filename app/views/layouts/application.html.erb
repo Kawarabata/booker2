@@ -7,14 +7,42 @@
 
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+    <!--<link href="//maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">-->
+    <script src="https://kit.fontawesome.com/1cd7551525.js" crossorigin="anonymous"></script>
   </head>
 
   <body>
-    <% if user_signed_in? %>    <span><%= link_to 'ログアウト', destroy_user_session_path, method: :delete %></span>
-    <% else %>
-    <span><%= link_to '新規登録', new_user_registration_path %></span>
-    <span><%= link_to 'ログイン', new_user_session_path %></span>
-    <% end %>
+    <header>
+      <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <div class="container">
+          <%= link_to 'Bookers', root_path, class: "navbar-brand" %>
+          <div class="collapsenavbar-collapse">
+            <ul class="navbar-nav ml-auto">
+              <% if user_signed_in? %>
+              <li><%= link_to 'Home', current_user, class:'fas fa-home nav-link text-light' %></li>
+              <li><%= link_to 'Users', users_path, class:'fas fa-users nav-link text-light' %></li>
+              <li><%= link_to 'Books', books_path, class:'fas fa-book_open nav-link text-light' %></li>
+              <li><%= link_to 'logout', destroy_user_session_path, method: :delete, class: 'fas fa-sign-in-alt nav-link text-light' %></li>
+              <% else %>
+              <li><%= link_to 'Home', root_path, class:'fas fa-home nav-link text-light' %></li>
+              <li><%= link_to 'About', 'home/about', class: 'fas fa-link nav-link text-light' %></li>
+              <li><%= link_to 'sign up', new_user_registration_path, class: 'fas fa-user-plus nav-link text-light' %></li>
+              <li><%= link_to 'login', new_user_session_path, class: 'fas fa-sign-in-alt nav-link text-light' %></li>
+              <% end %>
+            </ul>
+          </div>
+        </div>
+      </nav>
+    </header>
     <%= yield %>
+    <footer>
+      <div class="container mt-5">
+        <div class="row">
+          <div class="mx-auto">
+            <p>CopyRight Karawabata</p>
+          </div>
+        </div>
+      </div>
+    </footer>
   </body>
 </html>

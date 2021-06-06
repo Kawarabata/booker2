@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
-  root to: 'homes#top'
+  root to: 'home#top'
+  get 'home/about'
   devise_for :users
   resources :users, only: %i[index show edit update]
   resources :books, except: :new

@@ -1,10 +1,13 @@
 class BooksController < ApplicationController
+  before_action :authenticate_user!
+
   def index
     @books = Book.all
   end
 
   def show
     @book = Book.find(params[:id])
+    @user = @book.user
   end
 
   def create
@@ -20,6 +23,7 @@ class BooksController < ApplicationController
 
   def edit
     @book = Book.find(params[:id])
+    redirect_to books_path unless current_user == @book.user
   end
 
   def update
@@ -28,6 +32,7 @@ class BooksController < ApplicationController
       flash[:notice] = "successfully update a book"
       redirect_to book_path(@book.id)
     else
+      flash[:alert] = "update failed"
       render :edit
     end
   end

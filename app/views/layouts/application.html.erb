@@ -36,7 +36,7 @@
     <main>
       <div class="container px-5 px-sm-0">
         <div class="row">
-          <% if current_user %>
+          <% if current_user && !(controller.controller_name == "books" && controller.action_name == "edit") %>
           <div class="col-md-3">
             <h2>User info</h2>
             <table class="table">

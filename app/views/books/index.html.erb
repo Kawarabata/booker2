@@ -15,7 +15,7 @@
           <%= attachment_image_tag book.user.profile_image_id, :image %>
         <% end %>
       </td>
-      <td><%= book.title %></td>
+      <td><%= link_to book.title, book_path(book) %></td>
       <td><%= book.body %></td>
     <% end %>
     </tr>

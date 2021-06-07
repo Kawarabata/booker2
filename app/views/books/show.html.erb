@@ -1,2 +1,19 @@
-<h1>Books#show</h1>
-<p>Find me in app/views/books/show.html.erb</p>
+<h2>Book detail</h2>
+
+<table class="table">
+  <tbody>
+    <tr>
+      <td>
+        <%= link_to user_path(@book.user.id) do %>
+          <%= attachment_image_tag @book.user.profile_image_id, :image %>
+        <% end %>
+      </td>
+      <td><%= link_to @book.title, book_path(@book) %></td>
+      <td><%= @book.body %></td>
+      <% if @book.user == current_user %>
+      <td><%= link_to 'Edit', edit_book_path(@book), class:'btn btn-sm btn-success' %></td>
+      <td><%= link_to 'Destroy', book_path(@book), method: :delete, class:'btn btn-sm btn-danger' %></td>
+      <% end %>
+    </tr>
+  </tbody>
+</table>

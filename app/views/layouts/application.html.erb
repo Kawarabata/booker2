@@ -11,7 +11,7 @@
   </head>
 
   <body>
-    <%= render 'partials/header' %>
+    <%= render 'shared/header' %>
     <main>
       <p id="notice">
         <% flash.each do |message_type, message| %>
@@ -21,7 +21,7 @@
       <div class="container px-5 px-sm-0">
         <div class="row">
           <% if current_user && !@hide_user_info %>
-          <%= render 'partials/sidebar', show_other_user: @show_other_user, user: @user, book: @book %>
+          <%= render 'shared/sidebar', show_other_user: @show_other_user, user: @user, book: @book %>
           <% end %>
           <div class="col-md-8 offset-md-1">
             <%= yield %>
@@ -29,6 +29,6 @@
         </div>
       </div>
     </main>
-    <%= render 'partials/footer' %>
+    <%= render 'shared/footer' %>
   </body>
 </html>

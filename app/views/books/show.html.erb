@@ -3,7 +3,7 @@
 <table class="table">
   <tbody>
     <tr>
-      <td><%= render 'partials/user_image_link', user: @user, show_user_name: true %></td>
+      <td><%= render 'users/profile_image_link', user: @user, show_user_name: true %></td>
       <td><%= link_to @book.title, book_path(@book) %></td>
       <td><%= @book.body %></td>
       <% if @user == current_user %>

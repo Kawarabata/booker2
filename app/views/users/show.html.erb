@@ -1,19 +1,2 @@
 <h2>Books</h2>
-<table class="table">
-  <thead>
-    <tr>
-      <th></th>
-      <th>Title</th>
-      <th>Opinion</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-    <% @books.each do |book| %>
-      <td><%= render 'partials/user_image_link', user: book.user %></td>
-      <td><%= link_to book.title, book_path(book) %></td>
-      <td><%= book.body %></td>
-    <% end %>
-    </tr>
-  </tbody>
-</table>
+<%= render 'partials/books_table', books: @books %>

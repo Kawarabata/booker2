@@ -1,47 +1,17 @@
 <div class="col-md-3">
   <h2>User info</h2>
-  <% if defined?(show_other_user) && show_other_user %>
-    <%= attachment_image_tag user, :profile_image, :fill, 100, 100, fallback: "no_image.jpg", size: '100x100' %>
-    <table class="table">
-      <tbody>
-        <tr>
-          <th>name</th>
-          <th><%= user.name %></th>
-        </tr>
-        <tr>
-          <th>introduction</th>
-          <th><%= user.introduction %></th>
-        </tr>
-      </tbody>
-    </table>
-    <div class="row">
-      <%= link_to '', edit_user_path(user), class:'btn btn-outline-secondary btn-block fas fa-user-cog' %>
-    </div>
-  <% else %>
-    <%= attachment_image_tag current_user, :profile_image, :fill, 100, 100, fallback: "no_image.jpg", size: '100x100' %>
-    <table class="table">
-      <tbody>
-        <tr>
-          <th>name</th>
-          <th><%= current_user.name %></th>
-        </tr>
-        <tr>
-          <th>introduction</th>
-          <th><%= current_user.introduction %></th>
-        </tr>
-      </tbody>
-    </table>
-    <div class="row">
-      <%= link_to '', edit_user_path(current_user), class:'btn btn-outline-secondary btn-block fas fa-user-cog' %>
-    </div>
-  <% end %>
+    <% if defined?(show_other_user) && show_other_user %>
+    <%= render 'users/user_info', user: user %>
+    <% else %>
+    <%= render 'users/user_info', user: current_user %>
+    <% end %>
   <h2>New book</h2>
   <% if book && book.errors.any? %>
     <div class="alert alert-warning">
       <ul>
-        <% book.errors.full_messages.each do |message| %>
-          <li><%= message %></li>
-        <% end %>
+      <% book.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
       </ul>
     </div>
   <% end %>

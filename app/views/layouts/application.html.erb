@@ -44,7 +44,7 @@
           <% if current_user && !@hide_user_info %>
           <div class="col-md-3">
             <h2>User info</h2>
-            <% if controller.controller_name.in?(%w[books users]) && controller.action_name == 'show' %>
+            <% if @show_other_user %>
               <%= attachment_image_tag @user, :profile_image, :fill, 100, 100, fallback: "no_image.jpg", size: '100x100' %>
               <table class="table">
                 <tbody>

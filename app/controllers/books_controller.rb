@@ -8,6 +8,7 @@ class BooksController < ApplicationController
   def show
     @book = Book.find(params[:id])
     @user = @book.user
+    @show_other_user = true
   end
 
   def create

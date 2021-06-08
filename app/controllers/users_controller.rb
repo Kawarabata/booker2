@@ -12,6 +12,7 @@ class UsersController < ApplicationController
 
   def edit
     @user = User.find(params[:id])
+    @hide_user_info = true
     redirect_to user_path(current_user.id) unless current_user == @user
   end
 

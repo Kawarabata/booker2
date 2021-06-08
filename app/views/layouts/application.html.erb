@@ -41,7 +41,7 @@
       </p>
       <div class="container px-5 px-sm-0">
         <div class="row">
-          <% if current_user && !(controller.controller_name.in?(%w[books users]) && controller.action_name == 'edit') %>
+          <% if current_user && !@hide_user_info %>
           <div class="col-md-3">
             <h2>User info</h2>
             <% if controller.controller_name.in?(%w[books users]) && controller.action_name == 'show' %>

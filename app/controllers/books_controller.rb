@@ -23,6 +23,7 @@ class BooksController < ApplicationController
 
   def edit
     @book = Book.find(params[:id])
+    @hide_user_info = true
     redirect_to books_path unless current_user == @book.user
   end
 
@@ -32,6 +33,7 @@ class BooksController < ApplicationController
       flash[:notice] = "successfully update a book"
       redirect_to book_path(@book.id)
     else
+      @hide_user_info = true
       flash[:alert] = "update failed"
       render :edit
     end
